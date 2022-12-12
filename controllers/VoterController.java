@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.practice.entity.Login;
 import com.example.practice.entity.Voter;
+import com.example.practice.service.LoginService;
 import com.example.practice.service.VoterService;
 
 @CrossOrigin(origins="http://localhost:3000/")
@@ -22,30 +25,44 @@ public class VoterController {
 	
 	@Autowired
 	private VoterService voterService;
+//	private LoginService loginService;
 	
-	@GetMapping("/voter")
+	@GetMapping("/voters")
 	public List<Voter> getAllVoters(){
 		return voterService.getAllVoters();
 	}
 	
-//	@PostMapping("/voter/emailID/passwrd")
-//	public Voter getLoginAndPassword(@PathVariable String emailID, @PathVariable String passwrd){
-//		return voterService.getLoginAndPassword(emailID, passwrd);
-//	}
+	@GetMapping("/voters/{voterID}")
+	public Voter getVoterById(@PathVariable int voterID) {
+		return voterService.getVoterById(voterID);
+	}
 	
-	@PutMapping("/voter/{voterID}")
-	public ResponseEntity<String> updateVoter(@PathVariable int voterID, @RequestBody Voter updatedVoter){
-		if(voterID!=updatedVoter.getVoterID()) {
-			return new ResponseEntity<String> ("Incorrect Voter ID", HttpStatus.BAD_REQUEST);
-		}else {
-			return new ResponseEntity<String> ("Details Updated",HttpStatus.OK);
-		}
+	@PostMapping("/voter/add")
+	public ResponseEntity<String> addVoter(@RequestBody Voter voter){
+		voterService.addVoter(voter);
+		return new ResponseEntity<String> ("New Voter is added", HttpStatus.OK);
 	}
-//	
-	@PostMapping("/voter")
-	public ResponseEntity<String> saveVoter(@RequestBody Voter voter){
-		voterService.saveVoter(voter);
-		return new ResponseEntity<String> ("Voter added to DB", HttpStatus.CREATED);
+	
+	@PutMapping("/voter/update/{voterID}")
+	public ResponseEntity<String> updateVoter(@PathVariable int voterID, @RequestBody Voter voter){
+		voterService.updateVoter(voterID, voter);
+		return new ResponseEntity<String> ("Voter updated successfully", HttpStatus.OK);
 	}
+	
+	@DeleteMapping("/voter/delete/{voterID}")
+	public ResponseEntity<String> deleteByVoterId(@PathVariable int voterID){
+		voterService.deleteByVoterId(voterID);
+		return new ResponseEntity<String> ("Voter deleted", HttpStatus.OK);
+	}
+	
+//	@PostMapping("/voter")
+//	public ResponseEntity<String> addVote(@PathVariable int contestantID, @RequestBody Voter updatedVoter){
+//		if(contestantID != 0) {
+//			return new ResponseEntity<String> ("You have already voted", HttpStatus.BAD_REQUEST);
+//		} else {
+//			voterService.addVote(contestantID, updatedVoter);
+//			return new ResponseEntity<String> ("Voted Successfully", HttpStatus.BAD_REQUEST);
+//		}
+//	}
 
 }

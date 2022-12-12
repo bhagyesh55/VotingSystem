@@ -17,57 +17,52 @@ import com.example.practice.votingRepository.VoterRepository;
 public class VoterServiceImpl implements VoterService {
 	
 	@Autowired
-	private VoterRepository vtr;
+	private VoterRepository voterRepo;
 	
 	@Transactional
 	@Override
-	public void updateVoter(int voterID, Voter updatedVoter) {
+	public void updateVoter(int voterID, Voter voter) {
 		// TODO Auto-generated method stub
-		vtr.updateVoterInfo(updatedVoter.getAddress(), updatedVoter.getCity(), updatedVoter.getState(),
-				updatedVoter.getEmailID(), updatedVoter.getMobileNumber(), updatedVoter.getPasswrd(), 
-				updatedVoter.getVoterID());
+		voterRepo.save(voter);
 
 	}
 
 	@Override
-	public void saveVoter(Voter voter) {
+	public void addVoter(Voter voter) {
 		// TODO Auto-generated method stub
-		vtr.save(voter);
+		voterRepo.save(voter);
 
 	}
 
 	@Override
 	public Voter getVoterById(int voterID) {
 		// TODO Auto-generated method stub
-		return vtr.findById(voterID).get();
+		return voterRepo.findById(voterID).get();
 	}
 
 	@Override
 	public List<Voter> getAllVoters() {
 		// TODO Auto-generated method stub
-		return (List<Voter>) vtr.findAll();
+		return (List<Voter>) voterRepo.findAll();
 	}
 
 	@Override
 	public void deleteByVoterId(int voterID) {
 		// TODO Auto-generated method stub
-		vtr.deleteById(voterID);
+		voterRepo.deleteById(voterID);
 	}
-
-	// value compare null  or not null
 	
+//	@Transactional
 //	@Override
-//	public Voter getLoginAndPassword(String emailID, String passwrd) {
-//		Optional<Voter> val = vtr.f
-//		Optional<Voter> var = vtr.findById(passwrd);
-//
+//	public void addVote(int voterID, Voter updatedVoter) {
+//		vtr.updateContestantID(updatedVoter.getContestantID(),updatedVoter.getVoterID());
 //		
-//		if (!val.isPresent() && !var.isPresent()) {
-//			throw new VoterNotFoundException("Incorrect EmailID or Password");
-//		}
-//		return val.get();
-//			
 //	}
-	
+//
+//	@Override
+//	public void addVoter(Voter voter) {
+//		// TODO Auto-generated method stub
+////		
+//	}
 
 }
