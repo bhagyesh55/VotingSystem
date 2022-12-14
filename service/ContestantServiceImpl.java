@@ -20,15 +20,15 @@ public class ContestantServiceImpl implements ContestantService {
 	private ContestantRepository crp;
 	
 	
-	@Transactional
-	@Override
-	public void updateContestant(int contestantID, Contestant updatedContestant) {
-		// TODO Auto-generated method stub
-		crp.updateContestantInfo(updatedContestant.getAddress(), updatedContestant.getCity(), 
-				updatedContestant.getState(), updatedContestant.getPasswrd(), updatedContestant.getMobileNumber(), 
-				updatedContestant.getContestantID());
-
-	}
+//	@Transactional
+//	@Override
+//	public void updateContestant(int contestantID, Contestant updatedContestant) {
+//		// TODO Auto-generated method stub
+//		crp.updateContestantInfo(updatedContestant.getCity(), 
+//				updatedContestant.getPassword(), updatedContestant.getMobileNumber(), 
+//				updatedContestant.getContestantID());
+//
+//	}
 
 	@Override
 	public void saveContestant(Contestant contestant) {
@@ -52,6 +52,13 @@ public class ContestantServiceImpl implements ContestantService {
 	@Override
 	public void deleteByContestantId(int contestantID) {
 		crp.deleteById(contestantID);
+		
+	}
+	
+	@Transactional
+	@Override
+	public void updateContestant(int contestantID, Contestant updatedContestant) {
+		crp.updateContestantInfo(updatedContestant.getStatus(),updatedContestant.getContestantID());
 		
 	}
 	

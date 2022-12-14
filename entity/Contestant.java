@@ -13,44 +13,31 @@ public class Contestant {
 	@Id
 	@GeneratedValue
 	private int contestantID;
-	private String passwrd;
-	private String firstName;
-	private String lastName;
+	private String fullName;
 	private String gender;
-	private Date dateOfBirth;
-//	private int age;
-	private String address;
+	private String status;
 	private String city;
-	private String state;
 	private String emailID;
-	private int mobileNumber;
-//	private int countOfVotes;
+	private String image;
+	private int countOfVotes;
+	
 	
 	public Contestant() {
 		
 	}
 	
-	
-
-	public Contestant(int contestantID, String passwrd, String firstName, String lastName, String gender,
-			Date dateOfBirth, String address, String city, String state, String emailID, int mobileNumber
-			) {
+	public Contestant(int contestantID, String fullName, String gender, String status, String city,
+			String emailID, String image, int countOfVotes) {
+		super();
 		this.contestantID = contestantID;
-		this.passwrd = passwrd;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.fullName = fullName;
 		this.gender = gender;
-		this.dateOfBirth = dateOfBirth;
-//		this.age = age;
-		this.address = address;
+		this.status = status;
 		this.city = city;
-		this.state = state;
 		this.emailID = emailID;
-		this.mobileNumber = mobileNumber;
-//		this.countOfVotes = countOfVotes;
+		this.image=image;
+		this.countOfVotes = countOfVotes;
 	}
-	
-	// if age column and countOfvotes column to be used add that in constructor and getter, setter
 
 	public int getContestantID() {
 		return contestantID;
@@ -60,28 +47,12 @@ public class Contestant {
 		this.contestantID = contestantID;
 	}
 
-	public String getPasswrd() {
-		return passwrd;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setPasswrd(String passwrd) {
-		this.passwrd = passwrd;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getGender() {
@@ -92,26 +63,12 @@ public class Contestant {
 		this.gender = gender;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	/*
-	 * public int getAge() { return age; }
-	 * 
-	 * public void setAge(int age) { this.age = age; }
-	 */
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getCity() {
@@ -122,12 +79,20 @@ public class Contestant {
 		this.city = city;
 	}
 
-	public String getState() {
-		return state;
+	public int getCountOfVotes() {
+		return countOfVotes;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setCountOfVotes(int countOfVotes) {
+		this.countOfVotes = countOfVotes;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getEmailID() {
@@ -137,21 +102,10 @@ public class Contestant {
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
 	}
-
-	public int getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(int mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	/*
-	 * public int getCountOfVotes() { return countOfVotes; }
-	 * 
-	 * public void setCountOfVotes(int countOfVotes) { this.countOfVotes =
-	 * countOfVotes; }
-	 */
+	
+	
+	
+	
 	
 	
 	
