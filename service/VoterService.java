@@ -12,6 +12,8 @@ public interface VoterService {
 
 	void updateVoter(int voterID, Voter voter);
 	
+	void updateVote(int voterID, Voter updatedVoter);
+	
 	void addVoter(Voter voter);
 	
 	void deleteByVoterId(int voterID);

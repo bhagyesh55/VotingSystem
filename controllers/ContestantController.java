@@ -28,16 +28,27 @@ public class ContestantController {
 		return (List<Contestant>) contestantService.getAllContestants();
 	}
 	
+	@GetMapping("/contestant/{contestantID}")
+	public Contestant getContestantById(@PathVariable int contestantID) {
+		return contestantService.getContestantById(contestantID);
+	}
+	
 	@PostMapping("/contestant")
 	public ResponseEntity<String> saveContestant(@RequestBody Contestant contestant){
 		contestantService.saveContestant(contestant);
 		return new ResponseEntity<String> ("Contestant added to DB",HttpStatus.OK);
 	}
 	
-	@PutMapping("/contestant/{contestantID}")
+	@PutMapping("/contestant/update/{contestantID}")
 	public ResponseEntity<String> updateContestant(@PathVariable int contestantID, @RequestBody Contestant updatedContestant){
 		contestantService.updateContestant(contestantID,updatedContestant);
 		return new ResponseEntity<String> ("Contestant updated",HttpStatus.OK);
+	}
+	
+	@PutMapping("/contestants/{contestantID}")
+	public ResponseEntity<String> updateVote(@PathVariable int contestantID, @RequestBody Contestant updatedContestant){
+		contestantService.updateVote(contestantID,updatedContestant);
+		return new ResponseEntity<String> ("voted!!!",HttpStatus.OK);
 	}
 
 }

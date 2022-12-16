@@ -10,9 +10,9 @@ public interface ContestantService {
 	
 	List<Contestant> getAllContestants();
 	
-	//void updateContestant(int contestantID, Contestant updatedContestant);
-	
 	void saveContestant(Contestant contestant);
+	
+	void updateVote(int countOfVotes, Contestant updatedContestant);
 	
 	void updateContestant(int contestantID, Contestant updatedContestant);
 	

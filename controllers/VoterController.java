@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.practice.entity.Login;
+
 import com.example.practice.entity.Voter;
-import com.example.practice.service.LoginService;
+
 import com.example.practice.service.VoterService;
 
 @CrossOrigin(origins="http://localhost:3000/")
@@ -53,6 +53,12 @@ public class VoterController {
 	public ResponseEntity<String> deleteByVoterId(@PathVariable int voterID){
 		voterService.deleteByVoterId(voterID);
 		return new ResponseEntity<String> ("Voter deleted", HttpStatus.OK);
+	}
+	
+	@PutMapping("/voter/votes/{voterID}")
+	public ResponseEntity<String> updateVote(@PathVariable int voterID, @RequestBody Voter updatedVoter){
+		voterService.updateVote(voterID, updatedVoter);
+		return new ResponseEntity<String> ("Voted!!!", HttpStatus.OK);
 	}
 	
 //	@PostMapping("/voter")

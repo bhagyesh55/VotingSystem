@@ -15,9 +15,9 @@ public interface VoterRepository extends CrudRepository<Voter, Integer> {
 //	void updateVoterInfo(String address, String city, String state, String emailID, long mobileNumber, String passwrd, 
 //			int voterID);
 	
-//	@Modifying
-//	@Query("update Voter set contestantID=?1 where voterID=?2")
-//	void updateContestantID(int contestantID,int voterID);
+	@Modifying
+	@Query("update Voter set contestantID=?1 where voterID=?2")
+	void updateVoteInfo(int contestantID,int voterID);
 	
 	
 //	

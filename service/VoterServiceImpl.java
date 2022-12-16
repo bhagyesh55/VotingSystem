@@ -52,6 +52,14 @@ public class VoterServiceImpl implements VoterService {
 		voterRepo.deleteById(voterID);
 	}
 	
+	@Transactional
+	@Override
+	public void updateVote(int voterID, Voter updatedVoter) {
+		voterRepo.updateVoteInfo(updatedVoter.getContestantID(), updatedVoter.getVoterID());
+		// TODO Auto-generated method stub
+		
+	}
+	
 //	@Transactional
 //	@Override
 //	public void addVote(int voterID, Voter updatedVoter) {

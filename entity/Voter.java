@@ -37,16 +37,13 @@ public class Voter {
 //		contestantID = 0;
 //	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Login login;
 	
 	public Voter() {
 		
 	}
 
 	public Voter(String firstName, String lastName, String gender, Date dateOfBirth, String address, String city,
-			String state, String emailID, long mobileNumber, String password, int contestantID, Login login) {
+			String state, String emailID, long mobileNumber, String password, int contestantID) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -59,7 +56,7 @@ public class Voter {
 		this.mobileNumber = mobileNumber;
 		this.password = password;
 		this.contestantID = contestantID;
-		this.login = login;
+		
 	}
 
 	public int getVoterID() {
@@ -158,20 +155,14 @@ public class Voter {
 		this.contestantID = contestantID;
 	}
 
-	public Login getLogin() {
-		return login;
-	}
 
-	public void setLogin(Login login) {
-		this.login = login;
-	}
 
 	@Override
 	public String toString() {
 		return "Voter [voterID=" + voterID + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
 				+ gender + ", dateOfBirth=" + dateOfBirth + ", address=" + address + ", city=" + city + ", state="
 				+ state + ", emailID=" + emailID + ", mobileNumber=" + mobileNumber + ", passwrd=" + password
-				+ ", contestantID=" + contestantID + ", login=" + login + "]";
+				+ ", contestantID=" + contestantID +  "]";
 	}
 
 	@Override

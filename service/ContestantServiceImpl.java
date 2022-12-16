@@ -19,16 +19,6 @@ public class ContestantServiceImpl implements ContestantService {
 	@Autowired
 	private ContestantRepository crp;
 	
-	
-//	@Transactional
-//	@Override
-//	public void updateContestant(int contestantID, Contestant updatedContestant) {
-//		// TODO Auto-generated method stub
-//		crp.updateContestantInfo(updatedContestant.getCity(), 
-//				updatedContestant.getPassword(), updatedContestant.getMobileNumber(), 
-//				updatedContestant.getContestantID());
-//
-//	}
 
 	@Override
 	public void saveContestant(Contestant contestant) {
@@ -55,22 +45,21 @@ public class ContestantServiceImpl implements ContestantService {
 		
 	}
 	
+
+	
+	@Transactional
+	@Override
+	public void updateVote(int contestantID, Contestant updatedContestant) {
+		// TODO Auto-generated method stub
+		crp.updateVotesInfo(updatedContestant.getCountOfVotes(),
+				updatedContestant.getContestantID());
+		
+	}
+//	
 	@Transactional
 	@Override
 	public void updateContestant(int contestantID, Contestant updatedContestant) {
+		// TODO Auto-generated method stub
 		crp.updateContestantInfo(updatedContestant.getStatus(),updatedContestant.getContestantID());
-		
 	}
-	
-//	@Override
-//	public Contestant getLoginAndPassword(String emailID, String passwrd) {
-//		Optional<Contestant> val = crp.findById(emailID);
-//		Optional<Contestant> var = crp.findById(passwrd);
-//		
-//		if (!val.isPresent() && !var.isPresent()) {
-//			throw new VoterNotFoundException("Incorrect EmailID or Password");
-//		}
-//		return val.get();
-//	}
-
 }
