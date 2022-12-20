@@ -23,6 +23,18 @@ import com.example.practice.service.VoterService;
 @RestController
 public class VoterController {
 	
+	public VoterController() {
+	
+	}
+	
+	public VoterService getVoterService() {
+		return voterService;
+	}
+
+	public void setVoterService(VoterService voterService) {
+		this.voterService = voterService;
+	}
+
 	@Autowired
 	private VoterService voterService;
 //	private LoginService loginService;
@@ -44,8 +56,8 @@ public class VoterController {
 	}
 	
 	@PutMapping("/voter/update/{voterID}")
-	public ResponseEntity<String> updateVoter(@PathVariable int voterID, @RequestBody Voter voter){
-		voterService.updateVoter(voterID, voter);
+	public ResponseEntity<String> updateVoter(@PathVariable int voterID, @RequestBody Voter updatedVoter){
+		voterService.updateVoter(voterID, updatedVoter);
 		return new ResponseEntity<String> ("Voter updated successfully", HttpStatus.OK);
 	}
 	

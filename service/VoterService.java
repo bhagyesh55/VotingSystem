@@ -10,7 +10,7 @@ public interface VoterService {
 	
 	List<Voter> getAllVoters();
 
-	void updateVoter(int voterID, Voter voter);
+	void updateVoter(int voterID, Voter updatedVoter);
 	
 	void updateVote(int voterID, Voter updatedVoter);
 	

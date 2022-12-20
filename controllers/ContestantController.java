@@ -20,6 +20,20 @@ import com.example.practice.service.ContestantService;
 @RestController
 public class ContestantController {
 	
+	public ContestantController() {
+		
+	}
+	
+	public ContestantService getContestantService() {
+		return contestantService;
+	}
+
+	public void setContestantService(ContestantService contestantService) {
+		this.contestantService = contestantService;
+	}
+
+
+
 	@Autowired
 	private ContestantService contestantService;
 	

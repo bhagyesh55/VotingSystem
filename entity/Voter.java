@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Voter {
 	
@@ -22,8 +24,10 @@ public class Voter {
 	private String firstName;
 	private String lastName;
 	private String gender;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dateOfBirth;
-//	private int age;
+	
 	private String address;
 	private String city;
 	private String state;
@@ -32,10 +36,7 @@ public class Voter {
 	private String password;
 	private int contestantID;
 	
-//	static int contestantID;
-//	static {
-//		contestantID = 0;
-//	}
+
 	
 	
 	public Voter() {

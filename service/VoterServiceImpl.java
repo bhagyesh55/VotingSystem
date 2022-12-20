@@ -21,9 +21,11 @@ public class VoterServiceImpl implements VoterService {
 	
 	@Transactional
 	@Override
-	public void updateVoter(int voterID, Voter voter) {
+	public void updateVoter(int voterID, Voter updatedVoter) {
 		// TODO Auto-generated method stub
-		voterRepo.save(voter);
+		voterRepo.updateVoterInfo(updatedVoter.getAddress(), updatedVoter.getCity(), 
+				updatedVoter.getState(), updatedVoter.getEmailID(),updatedVoter.getMobileNumber(), 
+				updatedVoter.getPassword(), updatedVoter.getVoterID());
 
 	}
 
